@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { ChatLayoutComponent } from './app/views/chat-layout/chat-layout.component';
 
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(ChatLayoutComponent, appConfig)
   .catch((err) => console.error(err));

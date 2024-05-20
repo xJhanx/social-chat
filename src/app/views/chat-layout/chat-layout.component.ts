@@ -5,9 +5,9 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: './chat-layout.component.html',
+  styleUrl: './chat-layout.component.css'
 })
-export class AppComponent {
-  title = 'front';
+export class ChatLayoutComponent {
+
 }
