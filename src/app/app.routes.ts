@@ -1,19 +1,44 @@
 import { Routes } from '@angular/router';
-import { ViewNotFoundComponent } from './views/view-not-found/view-not-found.component';
 
 export const routes: Routes = [
   {
     path : 'home',
-    loadComponent: () => import('./views/chat-layout/chat-layout.component').then(c => c.ChatLayoutComponent)
+    loadComponent : () => import('./views/home/home.component').then(component => component.HomeComponent),
+  },
+  {
+    path : 'auth',
+    children : [
+      {
+        path : 'login',
+        loadComponent : () => import('./views/auth/login/login.component').then(component => component.LoginComponent)
+      },
+      {
+        path : 'register',
+        loadComponent : () => import('./views/auth/register/register.component').then( component => component.RegisterComponent)
+      },
+      {
+        path : 'recovery-password',
+        loadComponent : () => import('./views/auth/recovery-password/recovery-password.component').then(component => component.RecoveryPasswordComponent)
+      },
+      {
+        path : 'forgot-password',
+        loadComponent : () => import('./views/auth/forgot-password/forgot-password.component').then(component => component.ForgotPasswordComponent)
+      }
+    ]
+  },
+  {
+    path : '',
+    redirectTo : '/home',
+    pathMatch : 'full'
   },
   {
     path: 'noview-found',
-    component : ViewNotFoundComponent,
-    pathMatch: 'full'
+    loadChildren: () => import('./views/no-found-view/no-found-view.module').then(m => m.NoFoundViewModule)
   },
   {
-    path: '**',
-    redirectTo: '/noview-found',
-    pathMatch: 'full'
+    path : '**',
+    redirectTo : '/noview-found',
+    pathMatch : 'full'
   }
+
 ]

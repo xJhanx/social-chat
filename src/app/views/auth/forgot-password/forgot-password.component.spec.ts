@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfirmEmailComponent } from './confirm-email.component';
+import { ForgotPasswordComponent } from './forgot-password.component';
 
-describe('ConfirmEmailComponent', () => {
-  let component: ConfirmEmailComponent;
-  let fixture: ComponentFixture<ConfirmEmailComponent>;
+describe('ForgotPasswordComponent', () => {
+  let component: ForgotPasswordComponent;
+  let fixture: ComponentFixture<ForgotPasswordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConfirmEmailComponent]
+      imports: [ForgotPasswordComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ConfirmEmailComponent);
+    fixture = TestBed.createComponent(ForgotPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
