@@ -1,0 +1,133 @@
+.main-chat{
+  position: relative;
+}
+
+.bg-template-light {
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.chat-img-friend {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.chat-friend-info-conectiom {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-friend-info-conectiom-1 {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--info-aside-chat);
+}
+
+.chat-friend-info-conectiom-2 {
+  font-size: 14px;
+  color: var(--title-color);
+}
+
+.div-profile-info {
+  display: flex;
+  gap: 10px;
+}
+
+/* Body chat */
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  width: 97%;
+  height: 75vh;
+  overflow: auto;
+}
+.chat-body::-webkit-scrollbar-thumb {
+  background-color: var(--color-scroll-bar);
+  border-radius: 10px;
+}
+
+.chat-body::-webkit-scrollbar {
+  height: 5px;
+  background-color: rgb(246, 246, 246);
+}
+
+
+.msg-receptor {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.div-text-receptor {
+  width: auto;
+  max-width: 50%;
+  padding: 10px;
+  background-color: var(--bg-msg-chat);
+  border-radius: 20px 20px 20px 0px;
+}
+
+
+.msg-emisor {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.div-text-emisor {
+  width: auto;
+  max-width: 50%;
+  padding: 10px;
+  background-color: var(--bg-box-chat);
+  border-radius: 20px 20px 0px 20px;
+}
+
+.msg-text {
+  text-align: justify;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  word-wrap: break-word;
+
+}
+
+.footer-sender-chat{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: var(--bg-msg-chat);
+  position: fixed;
+  bottom: 0px;
+  width: calc(75% - 20px);
+}
+
+.box-sender-msg{
+  max-height: 400px;
+  height: auto;
+  width: 95%;
+  border-radius: 20px;
+  border: 1px rgb(221, 221, 221) solid;
+  padding: 10px;
+  caret-color: rgb(244, 142, 244);
+}
+.box-sender-msg:focus{
+  outline: none;
+}
+
+.icon-btn-send{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

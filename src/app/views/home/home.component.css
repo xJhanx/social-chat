@@ -1,0 +1,20 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+}
+
+.aside {
+  grid-column : 1/2;
+  border-right: 1px solid rgb(206, 204, 204);
+  border-left: 1px solid rgb(206, 204, 204);
+  height: 100vh;
+  overflow-x: auto;
+}
+
+
+
+.chat{
+  grid-column: 2/5;
+  background-color: rgb(241, 237, 237);
+}

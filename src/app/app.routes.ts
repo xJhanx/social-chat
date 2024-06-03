@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path : 'home',
-    loadComponent : () => import('./views/home/home.component').then(component => component.HomeComponent),
+    loadChildren : () => import('./views/home/home.module').then(m => m.HomeModule),
   },
   {
     path : 'auth',
