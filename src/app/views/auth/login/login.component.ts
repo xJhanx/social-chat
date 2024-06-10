@@ -1,17 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder) { }
 
+  form = this.formBuilder.group({
+    user: ['',Validators.required],
+    password: ['',Validators.required],
+  });
+
+  login() : void {
+    console.log(this.form.value);
 
   }
+  ngOnInit(): void {
+  }
+
+
 }
