@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { io } from "socket.io-client";
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,14 @@ import { Component } from '@angular/core';
 export class HomeComponent {
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    console.log("runnign");
+    const socket = io("ws://localhost:3000");
 
+    socket.on("connect", () => {
+      console.log("Connected at socket.io");
+    });
+
+    socket.on("message", (data) => {
+      console.log(data);
+    });
   }
 }

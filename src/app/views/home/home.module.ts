@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { routes } from './home.routes';
 import { HomeComponent } from './home.component';
 import { MatIconModule } from '@angular/material/icon';
+import { authInterceptor } from '../../interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,8 +15,13 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     MatIconModule,
-    RouterModule.forChild(routes) // Importa y configura las rutas definidas
+    RouterModule.forChild(routes),
   ],
+  providers : [{
+    provide: HTTP_INTERCEPTORS,
+    useValue: authInterceptor,
+    multi: true
+  }],
   exports: [HomeComponent,AsideComponent,ChatComponent]
 })
 export class HomeModule { }
