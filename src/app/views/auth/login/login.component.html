@@ -3,7 +3,7 @@
     <form action="" class="form" [formGroup]="form">
       <span class="title-login">Login</span>
       <div class="form-inputs">
-        <input type="text" formControlName="user" placeholder="Ingrese su usuario" class="input-text">
+        <input type="text" formControlName="email" placeholder="Ingrese su usuario" class="input-text">
         <input type="text" formControlName="password" placeholder="Ingrese su contraseña" class="input-text">
       </div>
       <button class="btn-login"  (click)="login()" [disabled]="form.invalid">Login</button>
