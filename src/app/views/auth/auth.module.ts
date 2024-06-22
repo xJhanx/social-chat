@@ -5,18 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { routesAuth } from './auth.routes';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientImplement } from '../../shared/http-client';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent,RegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routesAuth),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [HttpClientImplement],
-  exports: [LoginComponent,RouterModule],
+  exports: [LoginComponent, RouterModule, RegisterComponent],
 })
 export class AuthModule { }

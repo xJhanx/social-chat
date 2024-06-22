@@ -6,6 +6,7 @@
         <input type="text" formControlName="email" placeholder="Ingrese su usuario" class="input-text">
         <input type="text" formControlName="password" placeholder="Ingrese su contraseña" class="input-text">
       </div>
+      <span class="error-login" *ngIf="errorLogin">{{errorLogin}}</span>
       <button class="btn-login"  (click)="login()" [disabled]="form.invalid">Login</button>
       <div class="links-bottom">
         <a [routerLink]="['/auth/forgot-password']">Forgot your password ?</a> <a

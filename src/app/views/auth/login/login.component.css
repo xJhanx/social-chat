@@ -88,3 +88,10 @@ a:hover {
   display: flex;
   justify-content: space-between;
 }
+
+.error-login{
+  color: red;
+  font-size: small;
+  font-weight: 500;
+  margin: 10px;
+}

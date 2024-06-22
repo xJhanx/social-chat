@@ -88,3 +88,9 @@ a:hover {
   display: flex;
   justify-content: flex-end;
 }
+.error-login {
+  color: red;
+  font-size: small;
+  font-weight: 500;
+  margin: 10px;
+}

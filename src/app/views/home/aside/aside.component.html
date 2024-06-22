@@ -96,70 +96,31 @@
     </div>
 
     <!-- box contacts -->
-    <div class="box-contact">
-      <div class="aside-div-img-chat">
-        <img class="aside-img-chat"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkIh30VvD43t3klQ2XZw4M3204XqLmnD95bQ&s" alt="">
+    <div *ngFor="let chat of chats" >
+      <div class="box-contact" (click)="openChat(chat.room)">
+        <div class="aside-div-img-chat">
+          <img class="aside-img-chat"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqf0Wx4wmsKfLYsiLdBx6H4D8bwQBurWhx5g&s" alt="">
+        </div>
+
+
+        <div class="aside-content-chat">
+          <span class="aside-name-chat">{{chat.name}}</span>
+          <span class="aside-text-message">Message last comming too large porua qwe asdas dasd Message last comming too
+            large porua qwe asdas</span>
+        </div>
+
+        <div class="aside-info-chat">
+          <span>1 min</span>
+          <span>
+            <mat-icon class="mat-18">done_all</mat-icon>
+          </span>
+        </div>
       </div>
-
-
-      <div class="aside-content-chat">
-        <span class="aside-name-chat">mark williams</span>
-        <span class="aside-text-message">Message last comming too large  porua qwe asdas dasd Message last comming too large porua qwe asdas</span>
-      </div>
-
-      <div class="aside-info-chat">
-        <span>1 min</span>
-        <span>
-          <mat-icon class="mat-18">done_all</mat-icon>
-        </span>
-      </div>
-
     </div>
 
-    <div class="box-contact">
-      <div class="aside-div-img-chat">
-        <img class="aside-img-chat"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkIh30VvD43t3klQ2XZw4M3204XqLmnD95bQ&s" alt="">
-      </div>
 
-
-      <div class="aside-content-chat">
-        <span class="aside-name-chat">mark williams</span>
-        <span class="aside-text-message">Message last comming too large  porua qwe asdas dasd Message last comming too large porua qwe asdas</span>
-      </div>
-
-      <div class="aside-info-chat">
-        <span>1 min</span>
-        <span>
-          <mat-icon class="mat-18">done_all</mat-icon>
-        </span>
-      </div>
-
-    </div>
-
-    <div class="box-contact">
-      <div class="aside-div-img-chat">
-        <img class="aside-img-chat"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkIh30VvD43t3klQ2XZw4M3204XqLmnD95bQ&s" alt="">
-      </div>
-
-
-      <div class="aside-content-chat">
-        <span class="aside-name-chat">mark williams</span>
-        <span class="aside-text-message">Message last comming too large  porua qwe asdas dasd Message last comming too large porua qwe asdas</span>
-      </div>
-
-      <div class="aside-info-chat">
-        <span>1 min</span>
-        <span>
-          <mat-icon class="mat-18">done_all</mat-icon>
-        </span>
-      </div>
-
-    </div>
-
-    <div class="box-contact">
+    <!-- <div class="box-contact">
       <div class="aside-div-img-chat">
         <img class="aside-img-chat"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkIh30VvD43t3klQ2XZw4M3204XqLmnD95bQ&s" alt="">
@@ -188,7 +149,7 @@
         </span>
       </div>
 
-    </div>
+    </div> -->
   </div>
 
 

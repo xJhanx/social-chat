@@ -4,11 +4,15 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
+  HttpResponse,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  constructor (private readonly router : Router) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
 
@@ -20,6 +24,20 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      tap((request) => {
+        if(request instanceof HttpResponse){
+          if(request.body.reloggin){
+            this.router.navigate(['/auth/login']);
+          }
+        }
+      }),
+      catchError((response: HttpErrorResponse) => {
+          if(response.error.reloggin){
+            this.router.navigate(['/auth/login']);
+          }
+        throw (response);
+      })
+    );
   }
 }

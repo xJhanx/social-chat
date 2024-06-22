@@ -1,12 +1,13 @@
 <div class="login-container">
   <div class="login">
-    <form action="" class="form">
+    <form action="" class="form" (submit)="register()" [formGroup]="form">
       <span class="title-login">Register</span>
       <div class="form-inputs">
-        <input type="text" name="" placeholder="Ingrese su usuario" class="input-text">
-        <input type="text" name="" placeholder="Ingrese su correo" class="input-text">
-        <input type="text" name="" placeholder="Ingrese su contraseña" class="input-text">
+        <input formControlName="name" type="text" placeholder="Ingrese su usuario" class="input-text">
+        <input formControlName="email"  type="text" placeholder="Ingrese su correo" class="input-text">
+        <input formControlName="password"  type="text" placeholder="Ingrese su contraseña" class="input-text">
       </div>
+      <span class="error-login" *ngIf="errorRegister">{{errorRegister}}</span>
       <button class="btn-login">Register</button>
       <div class="links-bottom">
          <a [routerLink]="['/auth/login']">Login</a>
