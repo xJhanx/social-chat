@@ -8,8 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpClientImplement } from '../../shared/http-client';
 import { AuthInterceptor } from '../../interceptors/auth.interceptor';
-import { AuthGuard } from '../../guards/auth-guard.guard';
 import { routes } from './home.routes';
+import { HomeService } from './services/home.service';
+import { User } from '../../shared/user.service';
+import { JwtService } from '../../shared/jwt.service';
 
 
 @NgModule({
@@ -18,11 +20,15 @@ import { routes } from './home.routes';
     CommonModule,
     MatIconModule,
     RouterModule.forChild(routes),
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     HttpClientImplement,
+    HomeService,
+    User,
+    JwtService,
   ],
   exports: [HomeComponent, AsideComponent, ChatComponent]
 })

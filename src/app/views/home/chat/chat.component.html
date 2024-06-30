@@ -1,4 +1,4 @@
-<div class="main-chat">
+<div class="main-chat" *ngIf="isActiveChat">
   <!-- Header chat -->
   <div class="bg-template-light">
     <div>
@@ -20,270 +20,22 @@
   </div>
 
   <div class="chat-body">
+    <div *ngFor="let item of messages">
+      <div class="msg-receptor" *ngIf="item.messages.user_id !== owsnerUser.id">
+        <div class="div-text-receptor">
+          <span class="msg-text">
+            {{item.messages.message}}
+          </span>
+        </div>
+      </div>
 
+      <div class="msg-emisor" *ngIf="item.messages.user_id=== owsnerUser.id">
+        <div class="div-text-emisor">
+          <span class="msg-text">{{item.messages.message}}</span>
+        </div>
+      </div>
 
-
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
     </div>
-
-    <div class="msg-emisor">
-      <div class="div-text-emisor">
-        <span class="msg-text">Hey hola como estas</span>
-      </div>
-    </div>
-
-
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-    <div class="msg-receptor">
-      <div class="div-text-receptor">
-        <span class="msg-text">
-          Hey hola como estas
-        </span>
-      </div>
-    </div>
-
   </div>
 
   <div class="footer-sender-chat">
@@ -293,4 +45,8 @@
     </div>
   </div>
 
+</div>
+
+<div class="no-chat" *ngIf="!isActiveChat">
+  <img class="img-no-chat" src="../../../../assets/bg-chat.jpg" alt="" srcset="">
 </div>

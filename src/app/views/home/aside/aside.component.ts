@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { InfoAsideChat } from './interfaces';
 
 @Component({
@@ -8,18 +8,22 @@ import { InfoAsideChat } from './interfaces';
 })
 export class AsideComponent {
 
-  //variable heredada
+  /**
+   * INPUTS
+   * Herence from Home
+   * @params Empty
+   */
   @Input() chats: InfoAsideChat[] = [];
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['chats']) {
-      console.log('chats input has changed:', changes['chats'].currentValue);
-      // Aquí puedes agregar la lógica que necesites cuando `chats` cambie
-    }
-  }
+  /**
+   * Outputs
+   * @params Empty
+   */
+  @Output() openConversation = new EventEmitter<any>();
 
-  openChat(id: number) {
-    console.log("abriendo sala con id ", id);
 
+
+  sendInfoConversation(chat: any) {
+    this.openConversation.emit(chat);
   }
 }

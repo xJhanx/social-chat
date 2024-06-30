@@ -112,6 +112,7 @@ hr {
 }
 .box-contact:hover {
   background-color: var(--bg-box-chat);
+  cursor: pointer;
 }
 
 .aside-name-chat {

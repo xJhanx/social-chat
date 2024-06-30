@@ -1,5 +1,6 @@
 import { HttpClient, HttpContext, HttpHeaders, HttpParams } from "@angular/common/http"
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class HttpClientImplement {
     return this.httpClient.get(url);
   }
 
-  post = (url: string, data: any, options?: {
+  post = <T>(url: string, data: any, options?: {
     headers?: HttpHeaders | {
       [header: string]: string | string[];
     };
@@ -26,7 +27,7 @@ export class HttpClientImplement {
     transferCache?: {
       includeHeaders?: string[];
     } | boolean;
-  }) => {
+  }) : Observable<T> => {
 
     try {
       if (!options) {
@@ -36,7 +37,7 @@ export class HttpClientImplement {
           }
         }
       }
-      return this.httpClient.post(url, data, options)
+      return this.httpClient.post<T>(url, data, options)
     } catch (error) {
       throw error;
     }

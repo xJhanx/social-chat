@@ -1,11 +1,11 @@
 <ng-container>
   <div class="content">
     <div class="aside">
-      <app-aside [chats]="chats"></app-aside>
+      <app-aside [chats]="chats"  (openConversation)="openConversation($event)"></app-aside>
     </div>
 
     <div class="chat">
-      <app-chat></app-chat>
+      <app-chat [messages]="messages" [isActiveChat]="isActiveChat"></app-chat>
     </div>
   </div>
 </ng-container>
