@@ -1,4 +1,6 @@
 export interface Conversation {
+  recipientName :string;
+  recipientId :number;
   room_id: number,
   messages: {
     user_id: number,

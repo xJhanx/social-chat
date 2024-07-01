@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SocketIoService } from './shared/socket';
 
 @Component({
   selector: 'app-root',

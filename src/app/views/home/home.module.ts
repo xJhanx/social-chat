@@ -12,6 +12,8 @@ import { routes } from './home.routes';
 import { HomeService } from './services/home.service';
 import { User } from '../../shared/user.service';
 import { JwtService } from '../../shared/jwt.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SocketIoService } from '../../shared/socket';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { JwtService } from '../../shared/jwt.service';
     MatIconModule,
     RouterModule.forChild(routes),
     HttpClientModule,
-
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
@@ -29,6 +32,7 @@ import { JwtService } from '../../shared/jwt.service';
     HomeService,
     User,
     JwtService,
+    SocketIoService
   ],
   exports: [HomeComponent, AsideComponent, ChatComponent]
 })
