@@ -32,6 +32,8 @@ export class ChatComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.messages);
+
     if(this.messages.length > 0){
       setTimeout(() => {
         this.scrollableDiv.nativeElement.scrollTop = this.scrollableDiv.nativeElement.scrollHeight;
@@ -43,12 +45,12 @@ export class ChatComponent implements OnChanges {
     if (!this.message.valid) return;
     const data = {
       message: this.message.value!,
-      room_id: this.recipientInfo.room,
+      room_id: this.recipientInfo?.room,
       recipient_id: this.recipientInfo.id
     }
     this.homeService.sendMessage(data).subscribe({
-      next: (res) => {
-        this.messageSended.emit(true);
+      next: (res : any) => {
+        this.messageSended.emit(res.response);
         this.message.setValue('');
       },
       error: (error) => {

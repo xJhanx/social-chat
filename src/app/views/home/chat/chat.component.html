@@ -9,7 +9,8 @@
           alt="prifile_img">
         <div class="chat-friend-info-conectiom">
           <span class="chat-friend-info-conectiom-1">{{recipientInfo.name}}</span>
-          <span class="chat-friend-info-conectiom-2">Last seen 2 at 7:45 PM</span>
+          <span class="chat-friend-info-conectiom-2" *ngIf="messages.length > 0">{{messages[messages.length -
+            1].messages.created_at | date}}</span>
         </div>
       </div>
       <!-- Seeting chat -->
@@ -20,21 +21,23 @@
   </div>
 
   <div #scrollableDiv class="chat-body">
-    <div *ngFor="let item of messages">
-      <div class="msg-receptor" *ngIf="item.messages.user_id !== owsnerUser.id">
-        <div class="div-text-receptor">
-          <span class="msg-text">
-            {{item.messages.message}}
-          </span>
+    <div *ngIf="messages.length > 0">
+
+      <div *ngFor="let item of messages">
+        <div class="msg-receptor" *ngIf="item.messages.user_id !== owsnerUser.id">
+          <div class="div-text-receptor">
+            <span class="msg-text">
+              {{item.messages.message}}
+            </span>
+          </div>
+        </div>
+
+        <div class="msg-emisor" *ngIf="item.messages.user_id=== owsnerUser.id">
+          <div class="div-text-emisor">
+            <span class="msg-text">{{item.messages.message}}</span>
+          </div>
         </div>
       </div>
-
-      <div class="msg-emisor" *ngIf="item.messages.user_id=== owsnerUser.id">
-        <div class="div-text-emisor">
-          <span class="msg-text">{{item.messages.message}}</span>
-        </div>
-      </div>
-
     </div>
   </div>
 
