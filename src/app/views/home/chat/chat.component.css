@@ -137,3 +137,12 @@
   max-height: 100%;
   max-width: 100%;
 }
+
+.status_user_online{
+  color: rgb(13, 210, 144);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.status_user_offline{
+  color: rgb(12, 29, 95);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

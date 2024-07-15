@@ -3,6 +3,7 @@ import { Conversation } from '../Interfaces';
 import { User } from '../../../shared/user.service';
 import { HomeService } from '../services/home.service';
 import { FormControl, Validators } from '@angular/forms';
+import { SocketIoService } from '../../../shared/socket';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ChatComponent implements OnChanges {
   constructor(
     private readonly usersService: User,
     private readonly homeService: HomeService,
+    private readonly socketService: SocketIoService
   ) { }
   @Input() messages: Conversation[] = [];
   @Input() isActiveChat: boolean = false;
@@ -23,20 +25,31 @@ export class ChatComponent implements OnChanges {
   @ViewChild('scrollableDiv') private scrollableDiv!: ElementRef;
 
   owsnerUser: any = {}
-  message = new FormControl('',Validators.required);
-
-
+  message = new FormControl('', Validators.required);
+  status_recipient: boolean = false;
 
   ngOnInit(): void {
     this.owsnerUser = this.usersService.getInfo();
+    this.socketService.socket?.on('user_connected', (idUser) => {
+      console.log("user",idUser);
+
+      if (this.recipientInfo.id == idUser) {
+        this.status_recipient = true;
+      }
+    });
+
+    this.socketService.socket?.on('user_disconnected', (idUser) => {
+      if (this.recipientInfo.id == idUser) {
+        this.status_recipient = false;
+      }
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.messages);
-
-    if(this.messages.length > 0){
+    if (this.messages.length > 0) {
       setTimeout(() => {
         this.scrollableDiv.nativeElement.scrollTop = this.scrollableDiv.nativeElement.scrollHeight;
+        this.socketService.socket?.emit('status_user', this.usersService.getInfo()?.id, this.recipientInfo.id);
       }, 0);
     }
   }
@@ -49,7 +62,7 @@ export class ChatComponent implements OnChanges {
       recipient_id: this.recipientInfo.id
     }
     this.homeService.sendMessage(data).subscribe({
-      next: (res : any) => {
+      next: (res: any) => {
         this.messageSended.emit(res.response);
         this.message.setValue('');
       },

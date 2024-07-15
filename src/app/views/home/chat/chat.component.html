@@ -11,6 +11,7 @@
           <span class="chat-friend-info-conectiom-1">{{recipientInfo.name}}</span>
           <span class="chat-friend-info-conectiom-2" *ngIf="messages.length > 0">{{messages[messages.length -
             1].messages.created_at | date}}</span>
+            <small [class]="status_recipient ? 'status_user_online' : 'status_user_offline'">{{status_recipient == true ? 'Online' : 'Offline'}}</small>
         </div>
       </div>
       <!-- Seeting chat -->
