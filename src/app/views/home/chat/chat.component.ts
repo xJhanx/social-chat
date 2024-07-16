@@ -19,7 +19,7 @@ export class ChatComponent implements OnChanges {
   ) { }
   @Input() messages: Conversation[] = [];
   @Input() isActiveChat: boolean = false;
-  @Input() recipientInfo: { id: number, name: string, room: number } = { id: 0, name: '', room: 0 };
+  @Input() recipientInfo: { id: number, name: string, room: number; statusLine: boolean } = { id: 0, name: '', room: 0, statusLine: false };
   @Output() messageSended: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('scrollableDiv') private scrollableDiv!: ElementRef;
@@ -30,26 +30,17 @@ export class ChatComponent implements OnChanges {
 
   ngOnInit(): void {
     this.owsnerUser = this.usersService.getInfo();
-    this.socketService.socket?.on('user_connected', (idUser) => {
-      console.log("user",idUser);
-
-      if (this.recipientInfo.id == idUser) {
-        this.status_recipient = true;
-      }
-    });
-
-    this.socketService.socket?.on('user_disconnected', (idUser) => {
-      if (this.recipientInfo.id == idUser) {
-        this.status_recipient = false;
-      }
-    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.messages.length > 0) {
       setTimeout(() => {
         this.scrollableDiv.nativeElement.scrollTop = this.scrollableDiv.nativeElement.scrollHeight;
-        this.socketService.socket?.emit('status_user', this.usersService.getInfo()?.id, this.recipientInfo.id);
+        this.socketService.socket?.emit('status_event', { owner: this.usersService.getInfo()?.id, recipient: this.recipientInfo.id });
+        this.socketService.socket?.on('response_status_event', (status) => {
+          console.log("LLEGO", status);
+          this.recipientInfo.statusLine = status;
+        });
       }, 0);
     }
   }

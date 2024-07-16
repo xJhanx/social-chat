@@ -21,25 +21,41 @@ export class HomeComponent {
     this.socketService.initialize();
   }
 
-  chats = [];
+  chats :Array<any> = [];
   ownerUser: UserInstance | null = null;
   messages: Conversation[] | [] = [];
-  recipientInfo: { id: number; name: string, room: number } = { id: 0, name: '', room: 0 };
+  recipientInfo: { id: number; name: string, room: number; statusLine: boolean } = { id: 0, name: '', room: 0, statusLine: false };
   isActiveChat: boolean = false;
   async ngOnInit() {
     const socket = await this.socketService.getInstance();
+    this.getChats();
+    this.ownerUser = this.userInstance.getInfo();
 
     socket.on("message_event", (roomId) => {
       this.getMessages(roomId);
     });
 
-    this.getChats();
+    await this.socketService.socket?.on('user_connected', (idUser) => {
+      console.log("user", idUser, "vs", this.chats);
 
-    this.ownerUser = this.userInstance.getInfo();
+      if (this.chats.length > 0) {
+        const index = this.chats.findIndex((chat) => chat.id == idUser);
+        this.chats[index].statusLine = true;
+      }
+
+    });
+
+    this.socketService.socket?.on('user_disconnected', (idUser) => {
+      if (this.chats.length > 0) {
+        const index = this.chats.findIndex((chat) => chat.id == idUser);
+        this.chats[index].statusLine = false;
+      }
+    });
+
 
   }
 
-  async openConversation(conversation: { id: number; name: string, room: number }) {
+  async openConversation(conversation: { id: number; name: string, room: number; statusLine: boolean }) {
     if (conversation.room) {
       this.getMessages(conversation.room);
     }
